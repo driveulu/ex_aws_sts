@@ -46,7 +46,7 @@ defmodule ExAws.STS.AuthCache.AssumeRoleWebIdentityAdapter do
     # assume_role accepts a duration between 900 and 3600 seconds
     # We're adding a buffer to make sure the credentials live longer than
     # the refresh interval.
-    {min, max, buffer} = {900, 3600, 5}
+    {min, max, buffer} = {900, 43200, 5}
     seconds = div(expiration_ms, 1000) + buffer
     Enum.max([Enum.min([max, seconds]), min])
   end
